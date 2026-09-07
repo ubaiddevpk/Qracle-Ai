@@ -36,4 +36,5 @@ export { TeamDirectoryGrid } from "./TeamSection";
 export { AboutTeamCarouselSection } from "./AboutTeamCarouselSection";
 export { ArtificialIntelligenceSection } from "./ArtificialIntelligenceSection";
 export { CybersecuritySection } from "./CybersecuritySection";
+export { WebDevelopmentSection } from "./WebDevelopmentSection";
 

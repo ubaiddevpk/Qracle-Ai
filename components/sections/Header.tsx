@@ -24,6 +24,15 @@ import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Container, Logo } from "@/components/ui";
 
 const SERVICES_ITEMS = [
+
+   {
+    title: "AI Solutions Landing Page",
+    description:
+      "Quantum-inspired intelligence, predictive neural engines, and autonomous enterprise AI agents.",
+    icon: Sparkles,
+    href: "/services/ai-solutions",
+    badge: "Featured",
+  },
   {
     title: "Cybersecurity",
     description:
@@ -64,14 +73,7 @@ const SERVICES_ITEMS = [
     href: "/services/digital-transformation",
     badge: "Modernize",
   },
-  {
-    title: "AI Solutions Landing Page",
-    description:
-      "Quantum-inspired intelligence, predictive neural engines, and autonomous enterprise AI agents.",
-    icon: Sparkles,
-    href: "/services/ai-solutions",
-    badge: "Featured",
-  },
+ 
 ];
 
 export function Header() {

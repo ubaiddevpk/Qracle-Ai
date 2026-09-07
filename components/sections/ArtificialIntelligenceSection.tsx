@@ -107,8 +107,6 @@ const METHODOLOGY_STEPS = [
 ];
 
 export function ArtificialIntelligenceSection() {
-  const [activeTab, setActiveTab] = useState<"telemetry" | "logs">("telemetry");
-
   return (
     <div className="relative overflow-hidden bg-[#0B0E14] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Ambient background glows */}

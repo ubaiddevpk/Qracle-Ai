@@ -3,6 +3,7 @@ import {
   Header,
   Footer,
   ArtificialIntelligenceSection,
+  CybersecuritySection,
 } from "@/components/sections";
 
 interface Props {
@@ -18,6 +19,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: "Artificial Intelligence Solutions — Intelligence, Engineered | Qracle AI",
       description:
         "Transform your business operations with applied, mission-critical AI solutions. We build robust, scalable architectures that enable data-driven enterprises.",
+    };
+  }
+
+  if (params.slug === "cybersecurity") {
+    return {
+      title: "Cybersecurity & Infrastructure — Security by Design | Qracle AI",
+      description:
+        "Fortify your digital operations with military-grade encryption, proactive threat hunting, and resilient infrastructure architectures designed for the AI era.",
     };
   }
 
@@ -40,6 +49,18 @@ export default function ServiceDetailPage({ params }: Props) {
         <Header />
         <main id="ai-service-main" className="relative overflow-hidden">
           <ArtificialIntelligenceSection />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (params.slug === "cybersecurity") {
+    return (
+      <>
+        <Header />
+        <main id="cybersecurity-main" className="relative overflow-hidden">
+          <CybersecuritySection />
         </main>
         <Footer />
       </>

@@ -51,6 +51,8 @@ export const ROUTES = {
   about: "/about",
   team: "/team",
   services: "/services",
+  artificialIntelligence: "/services/artificial-intelligence",
+  cybersecurity: "/services/cybersecurity",
   serviceDetail: (slug: string) => `/services/${slug}`,
   caseStudies: "/case-studies",
   caseStudyDetail: (slug: string) => `/case-studies/${slug}`,

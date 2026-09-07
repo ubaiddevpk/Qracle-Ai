@@ -146,7 +146,7 @@ export function TeamSection() {
           <TeamCategoryGroup
             title="Engineering"
             members={engineering}
-            columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl"
+            columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           />
 
           {/* Design & Product */}
@@ -354,7 +354,7 @@ export function TeamDirectoryGrid() {
       <TeamCategoryGroup
         title="Engineering"
         members={engineering}
-        columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       />
       <TeamCategoryGroup
         title="Design & Product"

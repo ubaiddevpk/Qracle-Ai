@@ -48,6 +48,14 @@ export const TEAM_MEMBERS: TeamMember[] = [
       email: "zunaira@qracleai.com",
     },
   },
+  {
+    id: "leadership-coming-soon",
+    name: "Coming Soon",
+    role: "Executive Leadership",
+    department: "Leadership",
+    isComingSoon: true,
+    bio: "New executive leadership addition joining our London and global headquarters soon.",
+  },
 
   // ─── Engineering ──────────────────────────────────────────────────────────
   {
@@ -73,5 +81,47 @@ export const TEAM_MEMBERS: TeamMember[] = [
       github: "https://github.com",
       email: "obaid@qracleai.com",
     },
+  },
+  {
+    id: "eng-coming-soon-1",
+    name: "Coming Soon",
+    role: "Head of Engineering",
+    department: "Engineering",
+    isComingSoon: true,
+    bio: "Deep-tech engineering leadership profile to be announced soon.",
+  },
+  {
+    id: "eng-coming-soon-2",
+    name: "Coming Soon",
+    role: "Cloud & DevOps Architect",
+    department: "Engineering",
+    isComingSoon: true,
+    bio: "Cloud infrastructure and DevOps architect profile to be announced soon.",
+  },
+  {
+    id: "eng-coming-soon-3",
+    name: "Coming Soon",
+    role: "AI & Deep-Tech Engineer",
+    department: "Engineering",
+    isComingSoon: true,
+    bio: "Enterprise intelligence and machine learning engineer profile to be announced soon.",
+  },
+
+  // ─── Design & Product ─────────────────────────────────────────────────────
+  {
+    id: "design-coming-soon-1",
+    name: "Coming Soon",
+    role: "UI/UX & Product Designer",
+    department: "Design & Product",
+    isComingSoon: true,
+    bio: "Product designer crafting next-generation enterprise interfaces and UX workflows.",
+  },
+  {
+    id: "design-coming-soon-2",
+    name: "Coming Soon",
+    role: "Technical Product Manager",
+    department: "Design & Product",
+    isComingSoon: true,
+    bio: "Product manager steering enterprise roadmap execution and agile innovation.",
   },
 ];

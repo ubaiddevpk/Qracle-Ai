@@ -74,7 +74,7 @@ export function HeroSection() {
               {/* Card Ambient Glow */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-500/25 to-blue-600/20 rounded-3xl blur-2xl -z-10 pointer-events-none" />
 
-              <FloatingElement distance={6} duration={5}>
+              <FloatingElement amplitude={6} duration={5}>
                 <div className="relative rounded-2xl bg-[#0D111A]/95 border border-cyan-500/30 p-6 shadow-2xl backdrop-blur-md">
                   {/* Card Header Bar */}
                   <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.08]">

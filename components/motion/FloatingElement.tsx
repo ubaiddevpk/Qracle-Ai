@@ -15,6 +15,8 @@ import { motion, type HTMLMotionProps } from "framer-motion";
 interface FloatingElementProps extends HTMLMotionProps<"div"> {
   /** How many pixels to oscillate up/down */
   amplitude?: number;
+  /** Alias for amplitude */
+  distance?: number;
   /** Duration of one full oscillation cycle (seconds) */
   duration?: number;
   /** Delay before animation starts (seconds) */
@@ -23,16 +25,18 @@ interface FloatingElementProps extends HTMLMotionProps<"div"> {
 
 export function FloatingElement({
   children,
-  amplitude = 10,
+  amplitude,
+  distance,
   duration = 6,
   delay = 0,
   className,
   ...props
 }: FloatingElementProps) {
+  const amp = distance ?? amplitude ?? 10;
   return (
     <motion.div
       animate={{
-        y: [0, -amplitude, 0],
+        y: [0, -amp, 0],
       }}
       transition={{
         duration,

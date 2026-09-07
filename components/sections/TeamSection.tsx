@@ -5,6 +5,8 @@ import {
   Quote,
   Users,
   ArrowRight,
+  Sparkles,
+  Clock,
 } from "lucide-react";
 import { Container, Button, LinkedinIcon, GithubIcon } from "@/components/ui";
 import { FadeIn } from "@/components/motion";
@@ -18,9 +20,6 @@ export function TeamSection() {
   );
   const engineering = TEAM_MEMBERS.filter((m) => m.department === "Engineering");
   const design = TEAM_MEMBERS.filter((m) => m.department === "Design & Product");
-  const operations = TEAM_MEMBERS.filter(
-    (m) => m.department === "Client Success & Operations"
-  );
 
   return (
     <div className="py-16 md:py-24 space-y-20">
@@ -102,8 +101,8 @@ export function TeamSection() {
                       href={spotlight.socials.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.08] hover:border-cyan-500/30 transition-all"
-                      aria-label={`${spotlight.name} on LinkedIn`}
+                      className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 flex items-center justify-center hover:bg-cyan-500/10 transition-all shadow-sm"
+                      aria-label={`${spotlight.name} LinkedIn`}
                     >
                       <LinkedinIcon className="h-4 w-4" />
                     </a>
@@ -113,8 +112,8 @@ export function TeamSection() {
                       href={spotlight.socials.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.08] hover:border-cyan-500/30 transition-all"
-                      aria-label={`${spotlight.name} on GitHub`}
+                      className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 flex items-center justify-center hover:bg-cyan-500/10 transition-all shadow-sm"
+                      aria-label={`${spotlight.name} GitHub`}
                     >
                       <GithubIcon className="h-4 w-4" />
                     </a>
@@ -122,7 +121,7 @@ export function TeamSection() {
                   {spotlight.socials?.email && (
                     <a
                       href={`mailto:${spotlight.socials.email}`}
-                      className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.08] hover:border-cyan-500/30 transition-all"
+                      className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 flex items-center justify-center hover:bg-cyan-500/10 transition-all shadow-sm"
                       aria-label={`Email ${spotlight.name}`}
                     >
                       <Mail className="h-4 w-4" />
@@ -134,13 +133,13 @@ export function TeamSection() {
           </div>
         </FadeIn>
 
-        {/* ─── Categorized Team Sections ─────────────────────────────────── */}
+        {/* ─── Departments Grids ─────────────────────────────────────────── */}
         <div className="space-y-16">
           {/* Leadership */}
           <TeamCategoryGroup
             title="Leadership"
             members={leadership}
-            columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl"
           />
 
           {/* Engineering */}
@@ -154,13 +153,6 @@ export function TeamSection() {
           <TeamCategoryGroup
             title="Design & Product"
             members={design}
-            columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl"
-          />
-
-          {/* Client Success & Operations */}
-          <TeamCategoryGroup
-            title="Client Success & Operations"
-            members={operations}
             columns="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl"
           />
         </div>
@@ -251,18 +243,32 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
         {/* Top hover accent line */}
         <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Circular Avatar */}
-        <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cyan-500/25 group-hover:border-cyan-400 transition-all duration-300 mb-4 bg-[#141A29] flex items-center justify-center shrink-0 shadow-md">
-          {member.image ? (
-            <img
-              src={member.image}
-              alt={member.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          ) : (
-            <User className="h-9 w-9 text-cyan-400/60 group-hover:text-cyan-300 transition-colors" />
-          )}
-        </div>
+        {/* Circular Avatar / Placeholder */}
+        {member.isComingSoon ? (
+          <div className="relative w-20 h-20 rounded-full border-2 border-dashed border-cyan-500/30 group-hover:border-cyan-400/70 transition-all duration-300 mb-4 bg-cyan-950/20 flex items-center justify-center shrink-0 shadow-inner">
+            <Sparkles className="h-8 w-8 text-cyan-400/60 group-hover:text-cyan-300 group-hover:scale-110 transition-transform" />
+          </div>
+        ) : (
+          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cyan-500/25 group-hover:border-cyan-400 transition-all duration-300 mb-4 bg-[#141A29] flex items-center justify-center shrink-0 shadow-md">
+            {member.image ? (
+              <img
+                src={member.image}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <User className="h-9 w-9 text-cyan-400/60 group-hover:text-cyan-300 transition-colors" />
+            )}
+          </div>
+        )}
+
+        {/* Status indicator for coming soon */}
+        {member.isComingSoon && (
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-semibold text-cyan-300 mb-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            Coming Soon
+          </div>
+        )}
 
         {/* Member Name */}
         <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">
@@ -279,38 +285,47 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
           {member.bio}
         </p>
 
-        {/* Social Links */}
+        {/* Social Links or Coming Soon indicator */}
         <div className="flex items-center gap-2 pt-2 border-t border-white/[0.06] w-full justify-center">
-          {member.socials?.linkedin && (
-            <a
-              href={member.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
-              aria-label={`${member.name} LinkedIn`}
-            >
-              <LinkedinIcon className="h-3.5 w-3.5" />
-            </a>
-          )}
-          {member.socials?.github && (
-            <a
-              href={member.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
-              aria-label={`${member.name} GitHub`}
-            >
-              <GithubIcon className="h-3.5 w-3.5" />
-            </a>
-          )}
-          {member.socials?.email && (
-            <a
-              href={`mailto:${member.socials.email}`}
-              className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
-              aria-label={`Email ${member.name}`}
-            >
-              <Mail className="h-3.5 w-3.5" />
-            </a>
+          {member.isComingSoon ? (
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+              <Clock className="h-3.5 w-3.5 text-cyan-400/60" />
+              <span>Profile in progress</span>
+            </div>
+          ) : (
+            <>
+              {member.socials?.linkedin && (
+                <a
+                  href={member.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
+                  aria-label={`${member.name} LinkedIn`}
+                >
+                  <LinkedinIcon className="h-3.5 w-3.5" />
+                </a>
+              )}
+              {member.socials?.github && (
+                <a
+                  href={member.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
+                  aria-label={`${member.name} GitHub`}
+                >
+                  <GithubIcon className="h-3.5 w-3.5" />
+                </a>
+              )}
+              {member.socials?.email && (
+                <a
+                  href={`mailto:${member.socials.email}`}
+                  className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/[0.06] hover:border-cyan-500/30 transition-all"
+                  aria-label={`Email ${member.name}`}
+                >
+                  <Mail className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -319,7 +334,6 @@ export function TeamCard({ member, delay = 0 }: TeamCardProps) {
 }
 
 // ─── Inline-safe directory grid (no page header / spotlight / CTA) ───────────
-// Use this when embedding the full team directory inside another section.
 
 export function TeamDirectoryGrid() {
   const spotlight = TEAM_MEMBERS.find((m) => m.isSpotlight);
@@ -329,9 +343,6 @@ export function TeamDirectoryGrid() {
   const allLeadership = spotlight ? [spotlight, ...leadership] : leadership;
   const engineering = TEAM_MEMBERS.filter((m) => m.department === "Engineering");
   const design = TEAM_MEMBERS.filter((m) => m.department === "Design & Product");
-  const operations = TEAM_MEMBERS.filter(
-    (m) => m.department === "Client Success & Operations"
-  );
 
   return (
     <div className="space-y-14">
@@ -348,11 +359,6 @@ export function TeamDirectoryGrid() {
       <TeamCategoryGroup
         title="Design & Product"
         members={design}
-        columns="grid-cols-1 sm:grid-cols-2 max-w-3xl"
-      />
-      <TeamCategoryGroup
-        title="Client Success & Operations"
-        members={operations}
         columns="grid-cols-1 sm:grid-cols-2 max-w-3xl"
       />
     </div>

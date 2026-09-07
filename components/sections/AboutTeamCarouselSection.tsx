@@ -10,6 +10,8 @@ import {
   Mail,
   ArrowRight,
   ExternalLink,
+  Sparkles,
+  Clock,
 } from "lucide-react";
 import { Container, LinkedinIcon, GithubIcon } from "@/components/ui";
 import { FadeIn } from "@/components/motion";
@@ -109,17 +111,23 @@ export function AboutTeamCarouselSection() {
               <div>
                 {/* Avatar & Department Badge */}
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-cyan-500/30 group-hover:border-cyan-400 transition-colors bg-[#141A29] flex items-center justify-center shrink-0 shadow-md">
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                      />
-                    ) : (
-                      <User className="h-7 w-7 text-cyan-400/70" />
-                    )}
-                  </div>
+                  {member.isComingSoon ? (
+                    <div className="relative w-14 h-14 rounded-full border-2 border-dashed border-cyan-500/30 group-hover:border-cyan-400/60 bg-cyan-950/20 flex items-center justify-center shrink-0 shadow-inner">
+                      <Sparkles className="h-6 w-6 text-cyan-400/70 group-hover:scale-110 transition-transform" />
+                    </div>
+                  ) : (
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-cyan-500/30 group-hover:border-cyan-400 transition-colors bg-[#141A29] flex items-center justify-center shrink-0 shadow-md">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
+                        />
+                      ) : (
+                        <User className="h-7 w-7 text-cyan-400/70" />
+                      )}
+                    </div>
+                  )}
                   <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-300 border border-white/[0.08] group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-colors">
                     {member.department}
                   </span>
@@ -137,47 +145,55 @@ export function AboutTeamCarouselSection() {
                 </p>
               </div>
 
-              {/* Socials */}
-              <div className="pt-3 border-t border-white/[0.06] flex items-center gap-2">
-                {member.socials?.linkedin && (
-                  <a
-                    href={member.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <LinkedinIcon className="h-3.5 w-3.5" />
-                  </a>
+              {/* Socials / Coming Soon indicator */}
+              <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between gap-2">
+                {member.isComingSoon ? (
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+                    <Clock className="h-3 w-3 text-cyan-400/60" />
+                    <span>Revealing soon</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    {member.socials?.linkedin && (
+                      <a
+                        href={member.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
+                        aria-label={`${member.name} LinkedIn`}
+                      >
+                        <LinkedinIcon className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {member.socials?.github && (
+                      <a
+                        href={member.socials.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
+                        aria-label={`${member.name} GitHub`}
+                      >
+                        <GithubIcon className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {member.socials?.email && (
+                      <a
+                        href={`mailto:${member.socials.email}`}
+                        className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
+                        aria-label={`Email ${member.name}`}
+                      >
+                        <Mail className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
                 )}
-                {member.socials?.github && (
-                  <a
-                    href={member.socials.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
-                    aria-label={`${member.name} GitHub`}
-                  >
-                    <GithubIcon className="h-3.5 w-3.5" />
-                  </a>
-                )}
-                {member.socials?.email && (
-                  <a
-                    href={`mailto:${member.socials.email}`}
-                    className="p-1.5 rounded-lg bg-white/[0.03] hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 transition-colors"
-                    aria-label={`Email ${member.name}`}
-                  >
-                    <Mail className="h-3.5 w-3.5" />
-                  </a>
-                )}
-                <div className="ml-auto">
-                  <Link
-                    href="/about/team"
-                    className="text-[11px] font-medium text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors"
-                  >
-                    View profile <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
+
+                <Link
+                  href="/about/team"
+                  className="text-[11px] font-medium text-slate-400 hover:text-cyan-400 flex items-center gap-1 transition-colors ml-auto"
+                >
+                  View profile <ArrowRight className="h-3 w-3" />
+                </Link>
               </div>
             </div>
           ))}

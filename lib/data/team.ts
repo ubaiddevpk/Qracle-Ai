@@ -2,11 +2,12 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
-  department: "Leadership" | "Engineering" | "Design & Product" | "Client Success & Operations";
+  department: "Leadership" | "Engineering" | "Design & Product";
   bio: string;
   image?: string;
   isSpotlight?: boolean;
   spotlightQuote?: string;
+  isComingSoon?: boolean;
   socials?: {
     linkedin?: string;
     github?: string;
@@ -41,66 +42,28 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Chief Operating Officer",
     department: "Leadership",
     image: "/team/zunaira-rehman.png",
-    bio: "Ensuring global operational alignment, governance frameworks, and driving international client delivery.",
+    bio: "Ensuring global operational alignment, governance frameworks, and driving international enterprise delivery.",
     socials: {
       linkedin: "https://linkedin.com",
       email: "zunaira@qracleai.com",
     },
   },
   {
-    id: "bilal-siddiqui",
-    name: "Bilal Siddiqui",
-    role: "Chief Financial Officer",
+    id: "leadership-coming-soon",
+    name: "Coming Soon",
+    role: "Executive Leadership",
     department: "Leadership",
-    bio: "Driving strategic capital allocation, enterprise risk governance, and multinational fiscal resilience.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "bilal@qracleai.com",
-    },
-  },
-  {
-    id: "ayesha-malik",
-    name: "Ayesha Malik",
-    role: "Chief Strategy Officer",
-    department: "Leadership",
-    bio: "Shaping frontier AI strategic roadmaps and identifying next-generation market transformation vectors.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "ayesha@qracleai.com",
-    },
+    isComingSoon: true,
+    bio: "New executive leadership addition joining our London and global headquarters soon.",
   },
 
   // ─── Engineering ──────────────────────────────────────────────────────────
-  {
-    id: "tariq-mahmood",
-    name: "Tariq Mahmood",
-    role: "Head of Engineering",
-    department: "Engineering",
-    bio: "Architecting scalable enterprise AI solutions, distributed cloud engines, and leading deep-tech delivery.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "tariq@qracleai.com",
-    },
-  },
-  {
-    id: "obaid-ullah",
-    name: "Obaid Ullah",
-    role: "Full-Stack Web Developer",
-    department: "Engineering",
-    bio: "Building robust, high-performance web platforms, real-time frontend architectures, and AI integrations.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "obaid@qracleai.com",
-    },
-  },
   {
     id: "muhammad-jalal",
     name: "Muhammad Jalal",
     role: "Full-Stack Web Developer",
     department: "Engineering",
-    bio: "Engineering enterprise-grade full-stack systems, secure microservices, and reactive user interfaces.",
+    bio: "Engineering enterprise-grade full-stack systems, secure microservices, and reactive modern user interfaces.",
     socials: {
       linkedin: "https://linkedin.com",
       github: "https://github.com",
@@ -108,75 +71,45 @@ export const TEAM_MEMBERS: TeamMember[] = [
     },
   },
   {
-    id: "fatima-noor",
-    name: "Fatima Noor",
-    role: "Cloud & DevOps Engineer",
+    id: "eng-coming-soon-1",
+    name: "Coming Soon",
+    role: "Head of Engineering",
     department: "Engineering",
-    bio: "Designing secure and scalable multi-cloud architectures for complex high-availability infrastructure.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "fatima@qracleai.com",
-    },
+    isComingSoon: true,
+    bio: "Deep-tech engineering leadership profile to be announced soon.",
   },
   {
-    id: "hassan-ahmed",
-    name: "Hassan Ahmed",
-    role: "DevOps Lead",
+    id: "eng-coming-soon-2",
+    name: "Coming Soon",
+    role: "Cloud & DevOps Architect",
     department: "Engineering",
-    bio: "Streamlining continuous integration, infrastructure as code, and zero-trust deployment pipelines.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "hassan@qracleai.com",
-    },
+    isComingSoon: true,
+    bio: "Cloud infrastructure and DevOps architect profile to be announced soon.",
+  },
+  {
+    id: "eng-coming-soon-3",
+    name: "Coming Soon",
+    role: "AI & Full-Stack Engineer",
+    department: "Engineering",
+    isComingSoon: true,
+    bio: "Enterprise intelligence and full-stack engineer profile to be announced soon.",
   },
 
   // ─── Design & Product ─────────────────────────────────────────────────────
   {
-    id: "aisha-khan",
-    name: "Aisha Khan",
-    role: "UI/UX Designer",
+    id: "design-coming-soon-1",
+    name: "Coming Soon",
+    role: "UI/UX & Product Designer",
     department: "Design & Product",
-    bio: "Crafting intuitive and engaging user interfaces tailored for high-complexity enterprise workflows.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "aisha@qracleai.com",
-    },
+    isComingSoon: true,
+    bio: "Product designer crafting next-generation enterprise interfaces and UX workflows.",
   },
   {
-    id: "usman-tariq",
-    name: "Usman Tariq",
-    role: "Product Manager",
+    id: "design-coming-soon-2",
+    name: "Coming Soon",
+    role: "Technical Product Manager",
     department: "Design & Product",
-    bio: "Bridging technical execution with strategic enterprise roadmap prioritization and agile delivery.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "usman@qracleai.com",
-    },
-  },
-
-  // ─── Client Success & Operations ──────────────────────────────────────────
-  {
-    id: "danial-ahmed",
-    name: "Danial Ahmed",
-    role: "Business Development Manager",
-    department: "Client Success & Operations",
-    bio: "Cultivating strategic partnerships and expanding our global enterprise client delivery footprint.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "danial@qracleai.com",
-    },
-  },
-  {
-    id: "zainab-malik",
-    name: "Zainab Malik",
-    role: "Project Delivery Manager",
-    department: "Client Success & Operations",
-    bio: "Ensuring flawless sprint execution, transparent governance, and milestone delivery for key enterprise accounts.",
-    socials: {
-      linkedin: "https://linkedin.com",
-      email: "zainab@qracleai.com",
-    },
+    isComingSoon: true,
+    bio: "Product manager steering enterprise roadmap execution and agile innovation.",
   },
 ];

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 115" fill="none">
+  <defs>
+    <!-- Cyan to Royal Blue Gradient -->
+    <linearGradient id="stacked-ring-grad" x1="15%" y1="10%" x2="90%" y2="95%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="45%" stop-color="#22D3EE" />
+      <stop offset="80%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <!-- Core Center Radial Glow -->
+    <radialGradient id="stacked-core-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#67E8F9" />
+      <stop offset="70%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="text-glow-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </radialGradient>
+
+    <!-- Filter for luminous glow -->
+    <filter id="stacked-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="stacked-halo" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow Behind Emblem -->
+  <circle cx="50" cy="40" r="30" fill="#22D3EE" fill-opacity="0.18" filter="url(#stacked-halo)" />
+  <circle cx="78" cy="68" r="10" fill="#38BDF8" fill-opacity="0.25" filter="url(#stacked-halo)" />
+
+  <!-- Outer Q-Ring -->
+  <circle
+    cx="50"
+    cy="40"
+    r="30"
+    stroke="url(#stacked-ring-grad)"
+    stroke-width="5"
+    stroke-linecap="round"
+    filter="url(#stacked-glow)"
+  />
+
+  <!-- Inner Quantum Network Lines -->
+  <g stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <line x1="50" y1="40" x2="50" y2="18" />
+    <line x1="50" y1="40" x2="32" y2="24" />
+    <line x1="50" y1="40" x2="26" y2="40" />
+    <line x1="50" y1="40" x2="33" y2="56" />
+    <line x1="50" y1="40" x2="68" y2="24" />
+    <line x1="50" y1="40" x2="67" y2="57" />
+
+    <line x1="32" y1="24" x2="50" y2="18" opacity="0.45" />
+    <line x1="50" y1="18" x2="68" y2="24" opacity="0.45" />
+    <line x1="32" y1="24" x2="26" y2="40" opacity="0.45" />
+    <line x1="26" y1="40" x2="33" y2="56" opacity="0.45" />
+  </g>
+
+  <!-- Q-Tail -->
+  <path
+    d="M 64 54 L 80 70"
+    stroke="url(#stacked-ring-grad)"
+    stroke-width="6"
+    stroke-linecap="round"
+    filter="url(#stacked-glow)"
+  />
+  <circle cx="80" cy="70" r="5" fill="#22D3EE" filter="url(#stacked-glow)" />
+  <circle cx="80" cy="70" r="2.5" fill="#FFFFFF" />
+
+  <!-- Satellite Network Nodes -->
+  <g fill="#22D3EE" filter="url(#stacked-glow)">
+    <circle cx="50" cy="18" r="3.2" />
+    <circle cx="32" cy="24" r="2.8" />
+    <circle cx="26" cy="40" r="3" />
+    <circle cx="33" cy="56" r="2.8" />
+    <circle cx="68" cy="24" r="3" />
+    <circle cx="67" cy="57" r="3.4" />
+  </g>
+
+  <!-- Node Inner White Highlights -->
+  <g fill="#FFFFFF">
+    <circle cx="50" cy="18" r="1.3" />
+    <circle cx="32" cy="24" r="1.1" />
+    <circle cx="26" cy="40" r="1.2" />
+    <circle cx="33" cy="56" r="1.1" />
+    <circle cx="68" cy="24" r="1.2" />
+    <circle cx="67" cy="57" r="1.4" />
+  </g>
+
+  <!-- Center Core Quantum Node -->
+  <circle cx="50" cy="40" r="10" fill="url(#stacked-core-glow)" filter="url(#stacked-glow)" />
+  <circle cx="50" cy="40" r="4.5" fill="#FFFFFF" />
+
+  <!-- Wordmark "QracleAI" below emblem -->
+  <text
+    x="50"
+    y="102"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif"
+    font-weight="800"
+    font-size="16.5"
+    letter-spacing="-0.02em"
+    fill="url(#text-glow-grad)"
+    filter="url(#stacked-glow)"
+  >
+    Qracle<tspan fill="#FFFFFF">AI</tspan>
+  </text>
+</svg>

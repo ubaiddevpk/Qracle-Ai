@@ -2,26 +2,194 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Quantum Precision Design System — Global CSS ───────────────────────────
+   All CSS custom properties match the tokens defined in /lib/theme.ts.
+   The body always uses the dark midnight theme (no light mode toggle needed).
+──────────────────────────────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary: #0b0e14;
+  --bg-secondary: #0f1219;
+  --bg-tertiary: #141820;
+
+  /* Accent */
+  --accent-cyan: #22d3ee;
+  --accent-blue: #2563eb;
+  --accent-cyan-dark: #0891b2;
+  --accent-blue-dark: #1d4ed8;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+
+  /* Borders */
+  --border-subtle: #1e2433;
+  --border-default: #252d3d;
+
+  /* Shadows / Glows */
+  --glow-cyan: 0 0 20px rgba(34, 211, 238, 0.3);
+  --glow-blue: 0 0 20px rgba(37, 99, 235, 0.3);
+  --glow-primary: 0 0 30px rgba(34, 211, 238, 0.2), 0 0 60px rgba(37, 99, 235, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Base Resets ──────────────────────────────────────────────────────────── */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Typography Defaults ─────────────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /* ── Focus Styles ────────────────────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── Scrollbar Styling ───────────────────────────────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan-dark);
+  }
+
+  /* ── Selection ───────────────────────────────────────────────────────────── */
+  ::selection {
+    background-color: rgba(34, 211, 238, 0.25);
+    color: var(--text-primary);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Component Utilities ─────────────────────────────────────────────────── */
+
+@layer components {
+  /* Gradient text shorthand */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  /* Glass card surface */
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-xl;
+  }
+
+  /* Glass card with cyan accent border */
+  .glass-card-accent {
+    @apply bg-white/[0.04] backdrop-blur-sm border border-cyan-400/20 rounded-xl;
+  }
+
+  /* Gradient button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold
+           rounded-full px-6 py-3 transition-all duration-300
+           hover:shadow-glow-cyan hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* Ghost / outline button */
+  .btn-ghost {
+    @apply border border-cyan-400/30 text-content-primary font-semibold
+           rounded-full px-6 py-3 transition-all duration-300
+           hover:border-cyan-400 hover:bg-cyan-400/10 active:scale-[0.98];
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-full h-px bg-gradient-divider opacity-60;
+  }
 }
 
+/* ─── Utility Layer ───────────────────────────────────────────────────────── */
+
 @layer utilities {
+  /* Text balance */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Glow filter effects */
+  .glow-cyan {
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6));
+  }
+
+  .glow-blue {
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
+  }
+
+  /* Noise texture overlay for depth */
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

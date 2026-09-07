@@ -8,7 +8,7 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { Container } from "@/components/ui";
-import { FadeIn, SlideUp } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 
 const PRINCIPLES = [
   {

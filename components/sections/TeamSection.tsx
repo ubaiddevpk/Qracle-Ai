@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import {
   Mail,
   User,
@@ -8,7 +7,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Container, Button, LinkedinIcon, GithubIcon } from "@/components/ui";
-import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { TEAM_MEMBERS, TeamMember } from "@/lib/data/team";
 
 export function TeamSection() {

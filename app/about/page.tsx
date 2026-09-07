@@ -8,7 +8,6 @@ import {
   AboutTeamCarouselSection,
   CTASection,
 } from "@/components/sections";
-import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us — Engineering Trust Across Borders",

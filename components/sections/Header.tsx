@@ -19,7 +19,6 @@ import {
   Cpu,
   Sparkles,
   ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Container, Logo } from "@/components/ui";

@@ -1,22 +1,51 @@
 import type { Metadata } from "next";
-import { Header, Footer } from "@/components/sections";
+import {
+  Header,
+  Footer,
+  ArtificialIntelligenceSection,
+} from "@/components/sections";
 
 interface Props {
   params: { slug: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  if (
+    params.slug === "artificial-intelligence" ||
+    params.slug === "ai-solutions"
+  ) {
+    return {
+      title: "Artificial Intelligence Solutions — Intelligence, Engineered | Qracle AI",
+      description:
+        "Transform your business operations with applied, mission-critical AI solutions. We build robust, scalable architectures that enable data-driven enterprises.",
+    };
+  }
+
   return {
-    title: `Service — ${params.slug}`,
+    title: `Service — ${params.slug.replace(/-/g, " ")} | Qracle AI`,
     description: `Detailed information about this Qaracle AI service.`,
   };
 }
 
 /**
  * Service detail page — /services/[slug]
- * Content to be built in the next phase.
  */
 export default function ServiceDetailPage({ params }: Props) {
+  if (
+    params.slug === "artificial-intelligence" ||
+    params.slug === "ai-solutions"
+  ) {
+    return (
+      <>
+        <Header />
+        <main id="ai-service-main" className="relative overflow-hidden">
+          <ArtificialIntelligenceSection />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <>
       <Header />

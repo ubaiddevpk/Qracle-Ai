@@ -34,4 +34,5 @@ export { AboutPrinciplesSection } from "./AboutPrinciplesSection";
 export { TeamSection } from "./TeamSection";
 export { TeamDirectoryGrid } from "./TeamSection";
 export { AboutTeamCarouselSection } from "./AboutTeamCarouselSection";
+export { ArtificialIntelligenceSection } from "./ArtificialIntelligenceSection";
 
